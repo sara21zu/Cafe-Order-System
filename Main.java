@@ -7,9 +7,9 @@ class Drink {
 
     public void showDrink() {
         System.out.println("Size: " + size);
-        System.out.println("Milk: " + milk);
+        System.out.println("Milk: " + (milk ? "Yes" : "No"));
         System.out.println("Sugar: " + sugar);
-        System.out.println("Chocolate: " + chocolate);
+        System.out.println("Chocolate: " + (chocolate ? "Yes" : "No" ));
     }
 }
 
@@ -72,34 +72,12 @@ class TeaBuilder implements DrinkBuilder {
     }
 }
 
-// Abstract Factory
-interface DrinkFactory {
-    DrinkBuilder createDrinkBuilder();
-}
-
-// Coffee Factory
-class CoffeeFactory implements DrinkFactory {
-    public DrinkBuilder createDrinkBuilder() {
-        return new CoffeeBuilder();
-    }
-}
-
-// Tea Factory
-class TeaFactory implements DrinkFactory {
-    public DrinkBuilder createDrinkBuilder() {
-        return new TeaBuilder();
-    }
-}
-
 // Main
 public class Main {
     public static void main(String[] args) {
 
-        // اختاري نوع المشروب
-        DrinkFactory factory = new CoffeeFactory(); // أو TeaFactory
-
         // خذي الـ builder
-        DrinkBuilder builder = factory.createDrinkBuilder();
+        DrinkBuilder builder = new CoffeeBuilder();
 
         // بناء المشروب
         builder.setSize("Large");
