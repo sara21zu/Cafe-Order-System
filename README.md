@@ -42,6 +42,7 @@ Defines building steps:
 🔹 Main
 
 Creates the drink step by step using the builder:
+```java
 DrinkBuilder builder = new CoffeeBuilder();
 
 builder.setSize("Large");
@@ -54,7 +55,7 @@ builder.addChocolate();
 
 Drink drink = builder.build();
 drink.showDrink();
-
+```
 ⚙️ How it works
 
 1. Choose builder
