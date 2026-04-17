@@ -1,112 +1,87 @@
-# ☕ Cafe Order System (Builder + Abstract Factory)
+#☕ Cafe Order System (Builder Pattern)
 
-📌 Project Description
+📌 Description
 
-This project is a simple Cafe Order System implemented in Java.
-It demonstrates the use of two important Design Patterns:
-
-* Builder Pattern 🏗️
-* Abstract Factory Pattern 🏭
-
-The system allows creating different types of drinks (Coffee ☕ or Tea 🍵) with customizable options such as:
-
-* Size
-* Milk
-* Sugar
-* Chocolate
+This project is a simple Cafe Order System in Java.
+It uses the Builder Design Pattern to create drinks step by step.
 
 ⸻
 
-🏗️ Design Patterns Used
+🧱 Structure
 
-🔹 Builder Pattern
+🔹 Drink (Product)
 
-Used to construct a Drink object step by step.
-It allows flexibility in adding different options to the drink.
+Represents the final drink with:
 
-⸻
-
-🔹 Abstract Factory Pattern
-
-Used to create different types of drink builders without specifying their exact classes.
-
-Factories included:
-
-* CoffeeFactory
-* TeaFactory
-
-Each factory returns:
-
-* CoffeeBuilder
-* TeaBuilder
+* size
+* milk
+* sugar
+* chocolate
 
 ⸻
 
-🧩 Project Structure
+🔹 DrinkBuilder (Interface)
 
-* Drink → Represents the final drink
-* DrinkBuilder → Builder interface
-* CoffeeBuilder, TeaBuilder → Concrete builders
-* DrinkFactory → Abstract factory
-* CoffeeFactory, TeaFactory → Concrete factories
-* Main → Runs the program
+Defines building steps:
+
+* setSize()
+* addMilk()
+* setSugar()
+* addChocolate()
+* build()
+
+⸻
+
+🔹 Builders
+
+* CoffeeBuilder → builds coffee
+* TeaBuilder → builds tea
 
 ⸻
 
-▶️ How It Works
+🔹 Main
 
-1. Choose the drink type (Coffee or Tea)
-2. The factory creates the appropriate builder
-3. The builder sets drink options
-4. The drink is built and displayed
-
-⸻
-##💻 Example Usage
-```java
-DrinkFactory factory = new CoffeeFactory();
-DrinkBuilder builder = factory.createDrinkBuilder();
+Creates the drink step by step using the builder:
+DrinkBuilder builder = new CoffeeBuilder();
 
 builder.setSize("Large");
+
 builder.addMilk();
-builder.setSuger(2);
+
+builder.setSugar(2);
+
 builder.addChocolate();
 
 Drink drink = builder.build();
 drink.showDrink();
-```
+
+⚙️ How it works
+
+1. Choose builder
+2. Set properties
+3. Call build()
+4. Show result
 
 ⸻
-##📸Output
+
+✅ Why Builder Pattern?
+
+* Avoids complex constructors
+* Easy to modify
+* Flexible for different drinks
+
+⸻
+## 📸 Output
+
 ```
-Coffee ☕
 Size: Large
 Milk: Yes
 Sugar: 2
 Chocolate: Yes
 ```
-
-⸻
-##🧾Drink Options
-| Option     | Description            |
-|------------|------------------------|
-| Size       | Small / Medium / Large |
-| Milk       | Add milk or not        |
-| Sugar      | Amount of sugar        |
-| Chocolate  | Add chocolate or not   |
-
-⸻
-✅ Features
-
-* Supports multiple drink types ☕🍵
-* Customizable drink options
-* Clean and simple design
-* Easy to extend
-
 ⸻
 
 👩‍💻 Author
 
-Sara ✨
+* sara21zu
 
-⸻
-⭐ If you like this project, give it a star ⭐
